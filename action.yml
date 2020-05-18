@@ -1,0 +1,6 @@
+name: 'test'
+description: 'test ci/cd'
+runs:
+  using: 'docker'
+  image: 'dockerfile'
+  
