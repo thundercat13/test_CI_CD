@@ -28,21 +28,21 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@master
       - name: push
-   #     run: docker login -u ${{ secrets.DOCKER_LOGIN }} -p ${{ secrets.DOCKER_PWD }}  ${{ secrets.DOCKER_NAME }}
-   #   - name: Build image
-   #     run: docker build -t test_image -f dockerfile
-   #   - name: Push image to docker.io
-   #     run: docker push ${{ secrets.DOCKER_NAME }}/test_image
+        run: docker login -u ${{ secrets.DOCKER_LOGIN }} -p ${{ secrets.DOCKER_PWD }}  ${{ secrets.DOCKER_NAME }}
+      - name: Build image
+        run: docker build -t ${{ secrets.DOCKER_NAME}}/test_image -f dockerfile
+      - name: Push image to registry
+        run: docker push ${{ secrets.DOCKER_NAME }}/test_image
  
  
  
  
  
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_LOGIN }}
-          password: ${{ secrets.DOCKER_PWD }}
-          registry: ${{ secrets.DOCKER_NAME }}
-          repository: test_image
-          tags: v1
+       # uses: docker/build-push-action@v1
+       # with:
+       #   username: ${{ secrets.DOCKER_LOGIN }}
+       #   password: ${{ secrets.DOCKER_PWD }}
+       #   registry: ${{ secrets.DOCKER_NAME }}
+       #   repository: test_image
+       #   tags: v1
             
