@@ -32,7 +32,7 @@ jobs:
       - name: Build image
         run: docker build -t ${{ secrets.DOCKER_NAME }}/tt123:t_v2 -f dockerfile ./
       - name: Push image to registry
-        run: docker push ${{ secrets.DOCKER_NAME }}/test_image
+        run: docker push ${{ secrets.DOCKER_NAME }}/tt123:t_v2
  
  
  
