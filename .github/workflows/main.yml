@@ -23,16 +23,18 @@ jobs:
     
     needs: [test_job]
     runs-on: [ubuntu-latest]
-    
+    env:
+      LOGIN: ${{ secrets.DOCKER_LOGIN }}
+      NAME: ${{ secrets.DOCKER_NAME }}
     steps:
       - name: Check out the repo
         uses: actions/checkout@master
       - name: push
         run: docker login -u ${{ secrets.DOCKER_LOGIN }} -p ${{ secrets.DOCKER_PWD }}  ${{ secrets.DOCKER_NAME }}
       - name: Build image
-        run: docker build -t ${{ secrets.DOCKER_NAME }}/tt123:t_v2 -f dockerfile ./
+        run: docker build -t $LOGIN/$NAME:t_v2 -f dockerfile ./
       - name: Push image to registry
-        run: docker push ${{ secrets.DOCKER_NAME }}/tt123:t_v2
+        run: docker push $LOGIN/$NAME:t_v2
  
  
  
