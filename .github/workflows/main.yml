@@ -32,9 +32,9 @@ jobs:
       - name: push
         run: docker login -u ${{ secrets.DOCKER_LOGIN }} -p ${{ secrets.DOCKER_PWD }}  ${{ secrets.DOCKER_NAME }}
       - name: Build image
-        run: docker build -t $NAME/tt:t_v3 -f dockerfile ./
+        run: docker build -t $NAME/tt:latest -f dockerfile ./
       - name: Push image to registry
-        run: docker push $NAME/tt:t_v3
+        run: docker push $NAME/tt:latest
         
         
   try_to_run:
@@ -45,7 +45,7 @@ jobs:
       - name: run image
         uses: fifsky/ssh-action@master
         with:
-          command: docker rm ${{ secrets.DOCKER_NAME }}/tt:t_v3 && docker pull ${{ secrets.DOCKER_NAME }}/tt:t_v3 && docker run -d ${{ secrets.DOCKER_NAME }}/tt:t_v3
+          command: dp.sh
 
           host: ${{ secrets.DOCKER_NAME }}
           user: root
