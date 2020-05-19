@@ -34,7 +34,7 @@ jobs:
       - name: Build image
         run: docker build -t $LOGIN/$NAME:t_v2 -f dockerfile ./
       - name: Push image to registry
-        run: docker push $LOGIN/$NAME:t_v2
+        run: docker push $NAME/tt:t_v2
  
  
  
