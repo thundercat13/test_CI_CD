@@ -4,20 +4,20 @@ name: test
 
 on: [push]
 
-jobs:
-  test_job:
-    runs-on: ubuntu-latest
-    name: test dc 1
-    steps:
+#jobs:
+ # test_job:
+  #  runs-on: ubuntu-latest
+  #  name: test dc 1
+   # steps:
       # To use this repository's private action, you must check out the repository
-      - name: test_CI_CD
-        uses: actions/checkout@master
-      - name: test build dc
+   #   - name: test_CI_CD
+     #   uses: actions/checkout@master
+    #  - name: test build dc
       #  uses: ./ # Uses an action in the root directory
       #  id: test
       
-      - name: Get the output time
-        run: echo "The time was ${{ steps.test.outputs.time }}"
+    #  - name: Get the output time
+    #    run: echo "The time was ${{ steps.test.outputs.time }}"
 
   build_and_pub:
     
