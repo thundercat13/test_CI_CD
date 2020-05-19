@@ -45,8 +45,7 @@ jobs:
       - name: run image
         uses: fifsky/ssh-action@master
         with:
-        command: |
-         docker pull ${{ secrets.DOCKER_NAME }}/tt:t_v3 && docker run ${{ secrets.DOCKER_NAME }}/tt:t_v3
+        command: docker pull ${{ secrets.DOCKER_NAME }}/tt:t_v3 && docker run ${{ secrets.DOCKER_NAME }}/tt:t_v3
 
         host: ${{ secrets.DOCKER_NAME }}
         user: root
