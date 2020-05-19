@@ -45,7 +45,7 @@ jobs:
       - name: run image
         uses: fifsky/ssh-action@master
         with:
-          command: dp.sh
+          command: sh dp.sh
 
           host: ${{ secrets.DOCKER_NAME }}
           user: root
