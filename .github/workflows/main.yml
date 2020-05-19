@@ -43,4 +43,5 @@ jobs:
           username: ${{ secrets.DOCKER_LOGIN }}
           password: ${{ secrets.DOCKER_PWD }}
           registry: ${{ secrets.DOCKER_NAME }}/v2
+          name: test_image 
             
