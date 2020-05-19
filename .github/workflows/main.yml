@@ -35,19 +35,22 @@ jobs:
         run: docker build -t $NAME/tt:t_v3 -f dockerfile ./
       - name: Push image to registry
         run: docker push $NAME/tt:t_v3
- 
- run_image:
+        
+        
+  try_to_run:
+   
    needs: [build_and_pub]
    runs-on: [ubuntu-latest]
-   - name: try to run
-  uses: fifsky/ssh-action@master
-  with:
-    command: |
-      docker pull ${{ secrets.DOCKER_NAME }}/tt:t_v3 && docker run ${{ secrets.DOCKER_NAME }}/tt:t_v3
+   steps:
+      - name: run image
+        uses: fifsky/ssh-action@master
+        with:
+        command: |
+         docker pull ${{ secrets.DOCKER_NAME }}/tt:t_v3 && docker run ${{ secrets.DOCKER_NAME }}/tt:t_v3
 
-    host: ${{ secrets.DOCKER_NAME }}
-    user: root
-    pass: ${{ secrets.rpwd}}
+        host: ${{ secrets.DOCKER_NAME }}
+        user: root
+        pass: ${{ secrets.rpwd}}
  
  
  
