@@ -43,5 +43,5 @@ jobs:
           username: ${{ secrets.DOCKER_LOGIN }}
           password: ${{ secrets.DOCKER_PWD }}
           registry: ${{ secrets.DOCKER_NAME }}
-          repository: docker_registry_1
+          repository: t1
           tags: test1    
