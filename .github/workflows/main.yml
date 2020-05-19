@@ -32,7 +32,7 @@ jobs:
       - name: push
         run: docker login -u ${{ secrets.DOCKER_LOGIN }} -p ${{ secrets.DOCKER_PWD }}  ${{ secrets.DOCKER_NAME }}
       - name: Build image
-        run: docker build -t $LOGIN/$NAME:t_v2 -f dockerfile ./
+        run: docker build -t $NAME/tt:t_v2 -f dockerfile ./
       - name: Push image to registry
         run: docker push $NAME/tt:t_v2
  
