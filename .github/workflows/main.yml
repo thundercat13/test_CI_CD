@@ -43,6 +43,6 @@ jobs:
           username: ${{ secrets.DOCKER_LOGIN }}
           password: ${{ secrets.DOCKER_PWD }}
           registry: ${{ secrets.DOCKER_NAME }}
-          name: test_image
-          tags: ${{ secrets.DOCKER_NAME }}/test_image:v1
+          repository: ${{ secrets.DOCKER_NAME }}/test_image
+          tags: v1
             
