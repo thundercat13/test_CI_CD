@@ -1,5 +1,5 @@
 #!/bin/sh -l
 
-echo "test 1"
+echo "test 11"
 time=$(date)
 echo "::set-output name=time::$time"
