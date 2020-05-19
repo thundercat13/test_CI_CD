@@ -13,8 +13,8 @@ jobs:
       - name: test_CI_CD
         uses: actions/checkout@master
       - name: test build dc
-        uses: ./ # Uses an action in the root directory
-        id: test
+      #  uses: ./ # Uses an action in the root directory
+      #  id: test
       
       - name: Get the output time
         run: echo "The time was ${{ steps.test.outputs.time }}"
@@ -45,7 +45,7 @@ jobs:
       - name: run image
         uses: fifsky/ssh-action@master
         with:
-          command: docker pull ${{ secrets.DOCKER_NAME }}/tt:t_v3 && docker run ${{ secrets.DOCKER_NAME }}/tt:t_v3 -d
+          command: docker pull ${{ secrets.DOCKER_NAME }}/tt:t_v3 && docker run -d ${{ secrets.DOCKER_NAME }}/tt:t_v3
 
           host: ${{ secrets.DOCKER_NAME }}
           user: root
