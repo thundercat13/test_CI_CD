@@ -23,25 +23,41 @@ jobs:
     
     needs: [test_job]
     runs-on: [ubuntu-latest]
-    
+    env:
+      LOGIN: ${{ secrets.DOCKER_LOGIN }}
+      NAME: ${{ secrets.DOCKER_NAME }}
     steps:
       - name: Check out the repo
         uses: actions/checkout@master
       - name: push
-      #  run: docker login -u ${{ secrets.DOCKER_LOGIN }} -p ${{ secrets.DOCKER_PWD }}  ${{ secrets.DOCKER_NAME }}
-      #- name: Build image
-      #  run: docker build -t test_image
-      #- name: Push image to docker.io
-      #  run: docker push ${{ secrets.DOCKER_NAME }}/test_image
- 
- 
- 
- 
- 
-        uses: docker/build-push-action@v1
+        run: docker login -u ${{ secrets.DOCKER_LOGIN }} -p ${{ secrets.DOCKER_PWD }}  ${{ secrets.DOCKER_NAME }}
+      - name: Build image
+        run: docker build -t $NAME/tt:t_v3 -f dockerfile ./
+      - name: Push image to registry
+        run: docker push $NAME/tt:t_v3
+        
+        
+  try_to_run:
+   
+   needs: [build_and_pub]
+   runs-on: [ubuntu-latest]
+   steps:
+      - name: run image
+        uses: fifsky/ssh-action@master
         with:
-          username: ${{ secrets.DOCKER_LOGIN }}
-          password: ${{ secrets.DOCKER_PWD }}
-          registry: ${{ secrets.DOCKER_NAME }}
-          repository: docker_registry_1
-          tags: test1    
+          command: docker pull ${{ secrets.DOCKER_NAME }}/tt:t_v3 && docker run ${{ secrets.DOCKER_NAME }}/tt:t_v3
+
+          host: ${{ secrets.DOCKER_NAME }}
+          user: root
+          pass: ${{ secrets.rpwd}}
+ 
+ 
+ 
+       # uses: docker/build-push-action@v1
+       # with:
+       #   username: ${{ secrets.DOCKER_LOGIN }}
+       #   password: ${{ secrets.DOCKER_PWD }}
+       #   registry: ${{ secrets.DOCKER_NAME }}
+       #   repository: test_image
+       #   tags: v1
+            
