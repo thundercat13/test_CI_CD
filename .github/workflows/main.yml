@@ -42,5 +42,5 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_LOGIN }}
           password: ${{ secrets.DOCKER_PWD }}
-          registry: ${{ secrets.DOCKER_NAME }}/v1
+          registry: ${{ secrets.DOCKER_NAME }}/v2
             
