@@ -44,5 +44,5 @@ jobs:
           password: ${{ secrets.DOCKER_PWD }}
           registry: ${{ secrets.DOCKER_NAME }}
           name: test_image
-          tags: ${{ secrets.DOCKER_NAME }}/test_image
+          tags: ${{ secrets.DOCKER_NAME }}/test_image:v1
             
