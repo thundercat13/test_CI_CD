@@ -30,7 +30,7 @@ jobs:
       - name: push
         run: docker login -u ${{ secrets.DOCKER_LOGIN }} -p ${{ secrets.DOCKER_PWD }}  ${{ secrets.DOCKER_NAME }}
       - name: Build image
-        run: docker build -t $LOGIN/$NAME:test1 -f Dockerfile .
+        run: docker build -t ${{ secrets.DOCKER_NAME }}/test_image:test1 -f Dockerfile .
       - name: Push image to registry
         run: docker push ${{ secrets.DOCKER_NAME }}/test_image
  
